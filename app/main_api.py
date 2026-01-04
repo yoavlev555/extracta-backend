@@ -1,7 +1,8 @@
 import datetime
-from fastapi import FastAPI
-from app.api.v1 import documents, users
 
+from fastapi import FastAPI
+
+from app.api.v1 import documents, users
 from app.core.config import config
 
 app = FastAPI(title="Extracta backend API", version=config.version)

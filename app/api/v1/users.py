@@ -4,5 +4,5 @@ router = APIRouter()
 
 
 @router.get("/users", tags=["users"])
-def get_users():
+def get_users() -> None:
     pass

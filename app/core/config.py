@@ -1,4 +1,4 @@
-from importlib.metadata import version, PackageNotFoundError
+from importlib.metadata import PackageNotFoundError, version
 
 from dotenv import load_dotenv
 from pydantic_settings import BaseSettings
@@ -22,7 +22,7 @@ class Config(BaseSettings):
     version: str = _get_version(app_name)
 
     @property
-    def database_url(self):
+    def database_url(self) -> str:
         return f"{self.db_name}.db"
 
 
