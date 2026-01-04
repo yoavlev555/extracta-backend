@@ -4,5 +4,5 @@ router = APIRouter()
 
 
 @router.get("/documents", tags=["documents"])
-def get_documents() -> None:
+def get_documents():
     pass
