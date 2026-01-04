@@ -72,7 +72,7 @@ select = [
     "RET",   # flake8-return
     "ARG",   # flake8-unused-arguments
     "PTH",   # flake8-use-pathlib
-    "ANN", # flask8-type-annotations
+    "ANN", # flake8-type-annotations
     "ERA",   # eradicate (commented-out code)
     "PL",    # pylint
 ]
