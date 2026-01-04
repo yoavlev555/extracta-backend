@@ -8,11 +8,11 @@ from app.core.config import config
 app = FastAPI(title="Extracta backend API", version=config.version)
 
 # Register routes
-app.include_router(documents.router, prefix="/documents", tags=["documents"])
-app.include_router(users.router, prefix="/users", tags=["users"])
+app.include_router(documents.router)
+app.include_router(users.router)
 
 
-@app.get("/health")
+@app.get("/health", tags=["Health"])
 def health_check() -> dict[str, str]:
     """Health check endpoint"""
     return {

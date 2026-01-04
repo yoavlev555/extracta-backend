@@ -16,14 +16,7 @@ def _get_version(app_name: str) -> str:
 class Config(BaseSettings):
     app_name: str = "extracta-backend"
     debug: bool = False
-    db_user: str = ""
-    db_password: str = ""
-    db_name: str = ""
     version: str = _get_version(app_name)
-
-    @property
-    def database_url(self) -> str:
-        return f"{self.db_name}.db"
 
 
 config = Config()

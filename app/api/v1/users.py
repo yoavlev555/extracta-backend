@@ -1,8 +1,8 @@
 from fastapi import APIRouter
 
-router = APIRouter()
+router = APIRouter(tags=["Users"])
 
 
-@router.get("/users", tags=["users"])
-def get_users() -> None:
+@router.get("/users")
+def get_all_users() -> None:
     pass

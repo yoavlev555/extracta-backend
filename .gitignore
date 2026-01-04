@@ -1,0 +1,5 @@
+.venv/*
+.idea/*
+app/extracta_backend.egg-info/*
+.env
+*__pycache__*
