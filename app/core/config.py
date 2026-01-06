@@ -1,22 +1,34 @@
-from importlib.metadata import PackageNotFoundError, version
+import tomllib
+from pathlib import Path
 
 from dotenv import load_dotenv
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+def _read_pyproject() -> dict:
+    """Read pyproject.toml and return project metadata."""
+    pyproject_path = Path(__file__).parent.parent.parent / "pyproject.toml"
+    try:
+        with pyproject_path.open("rb") as f:
+            return tomllib.load(f)
+    except FileNotFoundError:
+        return {}
+
 
 load_dotenv()  # Automatically Load variables from .env directly into Config object
-
-
-def _get_version(app_name: str) -> str:
-    try:
-        return version(app_name)
-    except PackageNotFoundError:
-        return "0.0.0-dev"
+_PYPROJECT = _read_pyproject()  # Read once and cache
 
 
 class Config(BaseSettings):
-    app_name: str = "extracta-backend"
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        case_sensitive=False,
+    )
+
+    app_name: str = _PYPROJECT.get("project", {}).get("name", "extracta-backend")
+    version: str = _PYPROJECT.get("project", {}).get("version", "0.0.0-dev")
     debug: bool = False
-    version: str = _get_version(app_name)
 
 
 config = Config()
