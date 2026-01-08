@@ -13,6 +13,10 @@ dependencies = [
     "ruff>=0.14.10",
 ]
 
+[dependency-groups]
+dev = [
+    "ruff>=0.14.10",
+]
 [tool.setuptools]
 package-dir = {"" = "app"}
 
@@ -29,14 +33,18 @@ exclude = [
     ".git",
     ".git-rewrite",
     ".hg",
+    ".ipynb_checkpoints",
     ".mypy_cache",
     ".nox",
     ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
     ".pytype",
     ".ruff_cache",
     ".svn",
     ".tox",
     ".venv",
+    ".vscode",
     "__pypackages__",
     "_build",
     "buck-out",
