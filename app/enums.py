@@ -19,5 +19,6 @@ class Category(StrEnum):
     """
     Enum representing all possible document categories.
     """
+
     PREDEFINED = "predefined"
     CUSTOM = "custom"

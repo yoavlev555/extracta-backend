@@ -17,7 +17,7 @@ def _run_simulation(doc_id: str, db: list[Document]) -> None:
     """
     Worker logic that strictly follows: FETCH -> PROCESS -> UPDATE
     """
- 
+
     logger.info(f"[Worker] Job received for ID: {doc_id}")
     time.sleep(5)
 
