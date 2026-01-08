@@ -1,18 +1,19 @@
-import time
 import threading
-from typing import List
-from models import Document
+import time
+
 from enums import Status
+from models import Document
+
 from app.core.logger import logger
 
 
-def start_processing_simulation(doc_id: str, db: List[Document]):
+def start_processing_simulation(doc_id: str, db: list[Document]) -> None:
     thread = threading.Thread(target=_run_simulation, args=(doc_id, db))
     thread.daemon = True
     thread.start()
 
 
-def _run_simulation(doc_id: str, db: List[Document]):
+def _run_simulation(doc_id: str, db: list[Document]) -> None:
     """
     Worker logic that strictly follows: FETCH -> PROCESS -> UPDATE
     """

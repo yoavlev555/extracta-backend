@@ -1,7 +1,8 @@
-from pydantic import BaseModel, Field
 from datetime import datetime
-from app.enums import Status, Category
-from typing import Optional
+
+from pydantic import BaseModel, Field
+
+from app.enums import Category, Status
 
 
 class User(BaseModel):
@@ -29,4 +30,4 @@ class DocumentDB(DocumentCreate):
     id: str           
     status: Status = Field(default=Status.PENDING) 
     created_at: datetime = Field(default_factory=datetime.now)
-    error_message: Optional[str] = None
+    error_message: str | None = None
