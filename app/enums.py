@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import Enum, StrEnum
 
 
-class Status(str, Enum):
+class Status(StrEnum):
     """
     Enum representing all possible workflow statuses.
     """
@@ -15,7 +15,7 @@ class Status(str, Enum):
     SUCCESS = "success"
 
 
-class Category(str, Enum):
+class Category(StrEnum):
     """
     Enum representing all possible document categories.
     """

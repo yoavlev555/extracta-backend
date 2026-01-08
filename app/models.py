@@ -2,7 +2,6 @@ from pydantic import BaseModel, Field
 from datetime import datetime
 from app.enums import Status, Category
 from typing import Optional
-from enum import Enum
 
 
 class User(BaseModel):
@@ -12,17 +11,22 @@ class User(BaseModel):
     serial: int
 
 
-class Document(BaseModel):
+class DocumentCreate(BaseModel):
     """
-    Represents a document.
+    Document creation object for front app.
     """
-    id: str
-    url: str
-    user: int
+    url: str   
     category: Category
-    status: Status = Status.PENDING
+    user_id: int
+
+class DocumentDB(DocumentCreate):
+    """
+    DB document object.
+    """
+    url: str   
+    category: Category
+    user_id: int
+    id: str           
+    status: Status = Field(default=Status.PENDING) 
     created_at: datetime = Field(default_factory=datetime.now)
     error_message: Optional[str] = None
-
-
-
