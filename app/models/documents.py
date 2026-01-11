@@ -1,6 +1,5 @@
-from pydantic import BaseModel, Field
-
 from enums import DocumentStatus
+from pydantic import BaseModel, Field
 
 
 # ======== REQUEST MODELS ======== #

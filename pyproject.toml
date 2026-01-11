@@ -12,7 +12,6 @@ dependencies = [
     "fastapi-pagination>=0.15.4",
     "fastapi[standard]>=0.128.0",
     "ruff>=0.14.10",
-    "tinydb>=4.8.2",
 ]
 
 [dependency-groups]
