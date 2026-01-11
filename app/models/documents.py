@@ -1,20 +1,6 @@
-from enum import StrEnum, auto
-
 from pydantic import BaseModel, Field
 
-
-class DocumentStatus(StrEnum):
-    """
-    Enum representing all possible workflow statuses.
-    """
-
-    PENDING = auto()
-    PROCESSING = auto()
-    OCR_PARSED = auto()
-    LLM_ANALYZED = auto()
-    STORED_IN_STORAGE = auto()
-    ERROR = auto()
-    SUCCESS = auto()
+from enums import DocumentStatus
 
 
 # ======== REQUEST MODELS ======== #
@@ -36,14 +22,15 @@ class DocumentUpdate(BaseModel):
 
 class DocumentBulkDelete(BaseModel):
     document_ids: list[str] = Field(description="List of document IDs to delete", max_length=100)
-    failed_ids: list[str] | None = Field(description="List of failed document IDs", max_length=100)
 
 
 # ======== RESPONSE MODELS ======== #
 class Document(DocumentBase):
     id: str = Field(description="Unique identifier of the document")
     status: DocumentStatus = Field(description="Status of the document")
+    error_message: str | None = Field(description="Error message if there is a problem")
 
 
 class DocumentBulkDeleteResponse(BaseModel):
     deleted_count: int = Field(description="Number of deleted documents")
+    failed_ids: list[str] | None = Field(description="List of failed document IDs", max_length=100)
