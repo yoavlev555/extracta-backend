@@ -1,7 +1,7 @@
 import threading
 import time
 
-from enums import Status
+from enums import DocumentStatus
 from models import Document
 
 from app.core.logger import init_logger
@@ -29,10 +29,10 @@ def _run_simulation(doc_id: str, db: list[Document]) -> None:
         logger.error(f"Error: Document {doc_id} doesn't exist")
         return
 
-    doc.status = Status.PROCESSING
+    doc.status = DocumentStatus.PROCESSING
     logger.info(f"Processing {doc_id}...")
 
     time.sleep(10)
 
-    doc.status = Status.SUCCESS
+    doc.status = DocumentStatus.SUCCESS
     logger.info(f"{doc_id} is ready!")

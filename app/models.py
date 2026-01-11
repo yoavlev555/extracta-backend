@@ -2,7 +2,7 @@ from datetime import datetime
 
 from pydantic import BaseModel, Field
 
-from app.enums import Category, Status
+from app.enums import DocumentStatus
 
 
 class User(BaseModel):
@@ -19,19 +19,19 @@ class DocumentCreate(BaseModel):
     """
 
     url: str
-    category: Category
+    category: str
     user_id: int
 
 
-class DocumentDB(DocumentCreate):
+class Document(DocumentCreate):
     """
     DB document object.
     """
 
     url: str
-    category: Category
+    category: str
     user_id: int
     id: str
-    status: Status = Field(default=Status.PENDING)
+    status: DocumentStatus = Field(default=DocumentStatus.PENDING)
     created_at: datetime = Field(default_factory=datetime.now)
     error_message: str | None = None

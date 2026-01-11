@@ -1,7 +1,7 @@
 from enum import StrEnum
 
 
-class Status(StrEnum):
+class DocumentStatus(StrEnum):
     """
     Enum representing all possible workflow statuses.
     """
@@ -13,12 +13,3 @@ class Status(StrEnum):
     STORED_IN_STORAGE = "stored_in_storage"
     ERROR = "error"
     SUCCESS = "success"
-
-
-class Category(StrEnum):
-    """
-    Enum representing all possible document categories.
-    """
-
-    PREDEFINED = "predefined"
-    CUSTOM = "custom"
