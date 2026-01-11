@@ -86,7 +86,6 @@ async def create_document(request: DocumentCreate) -> Document:
     Example:
         POST /api/v1/documents
         {
-            "username": "john_doe",
             "file_name": "invoice_2024.pdf",
             "storage_key": "s3://bucket/invoice_2024.pdf",
             "category": "invoices",
@@ -127,7 +126,7 @@ async def delete_documents_bulk(request: DocumentBulkDelete) -> DocumentBulkDele
 
     Args:
         request: Bulk delete request (DocumentBulkDelete) containing:
-            - document_ids: List of document IDs to delete (typically limited to max 100)
+            - document_ids: List of document IDs to delete (limited to 20)
 
     Returns:
         DocumentBulkDeleteResponse: Summary of the deletion operation containing:
