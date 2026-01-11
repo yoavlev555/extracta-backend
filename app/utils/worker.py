@@ -2,9 +2,9 @@ import threading
 import time
 
 from enums import DocumentStatus
-from models import Document
 
 from app.core.logger import init_logger
+from app.models.documents import Document
 
 logger = init_logger(__name__)
 
