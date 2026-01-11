@@ -1,16 +1,14 @@
 import datetime
-import logging
 
 from fastapi import FastAPI
 
 from app.api.v1 import documents, users
 from app.core.config import config
-from app.core.logger import setup_logging
+from app.core.logger import init_logger
 
-setup_logging(log_level=logging.INFO)
+logger = init_logger(__name__)
 app = FastAPI(title="Extracta backend API", version=config.version)
 
-_LOGGER = logging.getLogger()
 
 # Register routes
 app.include_router(documents.router)
