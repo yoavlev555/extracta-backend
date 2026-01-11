@@ -5,7 +5,7 @@ def init_logger(name: str, log_level: int = logging.INFO) -> logging.Logger:
     """Initialize and configure a logger instance."""
     logging.basicConfig(
         level=log_level,
-        format="%(asctime)s - %(levelname)s - %(message)s",
+        format="%(asctime)s - %(levelname)s [%(filename)s:%(lineno)d] %(message)s",
         handlers=[logging.StreamHandler()],
     )
     return logging.getLogger(name)
