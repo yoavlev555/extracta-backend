@@ -9,6 +9,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "fastapi-pagination>=0.15.4",
     "fastapi[standard]>=0.128.0",
     "ruff>=0.14.10",
 ]
@@ -83,6 +84,10 @@ select = [
     "ANN", # flake8-type-annotations
     "ERA",   # eradicate (commented-out code)
     "PL",    # pylint
+]
+ignore = [
+    "B008",     # FastAPI uses function calls (Query, Path, Body) in argument defaults
+    "PLR0913",  # Allow more than 5 arguments for API endpoints with many query parameters
 ]
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
