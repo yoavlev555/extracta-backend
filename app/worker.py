@@ -4,9 +4,9 @@ import time
 from enums import Status
 from models import Document
 
-from app.core.logger import logger
+from app.core.logger import init_logger
 
-logger = logger.init_logger(__name__)
+logger = init_logger(__name__)
 
 
 def start_processing_simulation(doc_id: str, db: list[Document]) -> None:
