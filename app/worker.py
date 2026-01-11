@@ -8,6 +8,7 @@ from app.core.logger import logger
 
 logger = logger.init_logger(__name__)
 
+
 def start_processing_simulation(doc_id: str, db: list[Document]) -> None:
     thread = threading.Thread(target=_run_simulation, args=(doc_id, db))
     thread.daemon = True
